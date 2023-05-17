@@ -17,21 +17,10 @@ contract ContractA {
             balance -= 10;
         }
     }
-}
 
-contract ContractB {
-    ContractA public contractA;
+    // Function to receive Ether for testing 
+    function receives() external payable {
+        require(msg.value > 0, "invalied amount");
+        }
 
-    constructor(address contractAAddress) {
-        contractA = ContractA(contractAAddress);
-    }
-
-    function attack() external payable {
-        // Call vulnerable function repeatedly (fallback)
-        contractA.vulnerableFunction(payable(address(this)));
-    }
-
-    function getContractABalance() public view returns (uint) {
-        return contractA.balance();
-    }
 }
