@@ -3,13 +3,13 @@ pragma solidity ^0.8.9;
 
 contract SafeMath {
 
-    function safeMul(uint a, uint b) internal pure returns (uint) {
+    function mul(uint a, uint b) internal pure returns (uint) {
         uint c = a * b;
         assert(a == 0 || c / a == b);
         return c;
     }
 
-    function safeDiv(uint a, uint b) internal pure returns
+    function div(uint a, uint b) internal pure returns
         (uint) {  //inline assembly block in Solidity
         assert(b > 0);
         uint c = a / b;
@@ -17,13 +17,13 @@ contract SafeMath {
         return c;
     }
 
-    function safeSub(uint a, uint b) internal pure returns
+    function sub(uint a, uint b) internal pure returns
         (uint) {
         assert(b <= a);
         return a - b;
     }
 
-    function safeAdd(uint a, uint b) internal pure returns
+    function add(uint a, uint b) internal pure returns
         (uint) {
         uint c = a + b;
         assert(c>=a && c>=b);
